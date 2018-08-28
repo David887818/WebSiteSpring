@@ -1,0 +1,48 @@
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+.small {
+    font-family: 'Varela Round', sans-serif;
+}
+.bold{
+    font-family: 'Jua', sans-serif;
+    font-size: 72px;
+}
+.boldLight{
+    font-family: 'Jua', sans-serif;
+    font-size: 32px;
+}
+.boldSmall{
+    font-family: 'Jua', sans-serif;
+    font-size: 15px;
+}
+.height{
+    height: 25vh;
+}
+
+.bg{
+    background-color: #ede9da;
+}
+.a{
+    text-decoration: none;
+}
+.footer{
+    height: 10vh;
+    margin-top: 10%;
+}
+
+#post{
+    width: 70%;
+}
+
+.panel {
+    height: 15vh;
+    overflow: auto;
+    padding: 70px;
+}
+#toggle,#togg{
+    display: none;
+}
