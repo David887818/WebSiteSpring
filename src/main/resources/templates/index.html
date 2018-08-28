@@ -81,26 +81,26 @@
 <div class="d-flex w-100 mt-5 justify-content-center align-items-center">
     <div class="w-75  d-flex justify-content-between ">
         <div id="post" class="d-flex flex-column ">
-            <div th:each="comment : ${comments}" class="bg mt-2">
+            <div th:each="post : ${posts}" class="bg mt-2">
                 <div class="m-2">
                     <div class="d-flex  justify-content-center align-items-center">
-                        <img class="w-100" th:if="${comment.post.picUrl != null}" th:src="@{'/post/userImage?'(picUrl=${comment.post.picUrl})}">
+                        <img class="w-100" th:if="${post.picUrl != null}" th:src="@{'/post/userImage?'(picUrl=${post.picUrl})}">
                     </div>
                     <div class="m-4">
                         <div class="d-flex mt-2 flex-column justify-content-center align-items-center">
                             <div class="d-flex flex-column justify-content-center align-items-center">
-                                <h6 class="small text-danger mt-2" th:text="${comment.post.category.name}"></h6>
-                                <h2 class="boldLight" th:text="${comment.post.title}"></h2>
+                                <h6 class="small text-danger mt-2" th:text="${post.category.name}"></h6>
+                                <h2 class="boldLight" th:text="${post.title}"></h2>
                             </div>
                             <div class="d-flex mt-2 justify-content-center align-items-center">
-                                <p class="small" th:text="${comment.post.description}"></p>
+                                <p class="small" th:text="${post.description}"></p>
                             </div>
                             <div class="d-flex justify-content-between mt-2 border-top border-info w-100 ">
                                 <div class="mt-2 d-flex">
                                     <p class="text-muted ml-2 small">By</p>
                                     <p class="text-muted ml-2 small">Admin</p>
                                     <p class="text-muted ml-2 small">On</p>
-                                    <p class="text-muted ml-2 small" th:text="${comment.post.date}"></p>
+                                    <p class="text-muted ml-2 small" th:text="${post.date}"></p>
                                 </div>
 
                             </div>
@@ -109,9 +109,9 @@
                                 <a href="/logout" class="text-muted ml-2 small">Add Comments</a>
                             </div>
                             <div  class=" panel w-100 mt-2 ">
-                                <div class="d-flex m-2 align-items-center">
+                                <div th:each="comment : ${post.comments}" class="d-flex m-2 align-items-center">
                                     <img style="width: 50px"  th:if="${comment.user.picUrl != null}" th:src="@{'/post/userImage?'(picUrl=${comment.user.picUrl})}">
-                                    <p class="m-2" th:if="${comment.comment!=null}" th:text="${comment.comment}"></p>
+                                    <p class="m-2" th:if="${comment.comment != null}" th:text="${comment.comment}"></p>
                                 </div>
                             </div>
                         </div>

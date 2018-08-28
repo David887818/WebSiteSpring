@@ -4,6 +4,7 @@ import com.example.demo.model.Category;
 import com.example.demo.model.Comment;
 import com.example.demo.model.Post;
 
+import com.example.demo.model.UserType;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.PostRepository;
@@ -40,17 +41,27 @@ public class PostController {
     public String addComment(@RequestParam("user_id") int user_id,
                              @RequestParam("post_id") int post_id,
                              @RequestParam("comment") String comments
-    ){
+    ) {
         Comment comment = Comment.builder()
                 .post(postRepository.getOne(post_id))
                 .user(userRepository.getOne(user_id))
                 .comment(comments)
                 .build();
         commentRepository.save(comment);
-        return "/adminPage";
+
+        return "redirect:/type";
+
+
     }
 
-
+    @RequestMapping("/type")
+    public String type() {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal.getUser().getUserType() == UserType.ADMIN) {
+            return "adminPage";
+        }
+        return "userPage";
+    }
 
     @Value("${webSite.pic.url}")
     private String adPicDir;

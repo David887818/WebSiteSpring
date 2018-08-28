@@ -35,6 +35,9 @@ public class MainController {
         List<Post> posts = postRepository.findAll();
         List<Category> categories = categoryRepository.findAll();
         List<Comment> comments = commentRepository.findAll();
+        for (Post post : posts) {
+            post.setComments(commentRepository.findAllByPostId(post.getId()));
+        }
         map.addAttribute("posts", posts);
         map.addAttribute("comments", comments);
         map.addAttribute("categories", categories);
@@ -57,6 +60,9 @@ public class MainController {
             map.addAttribute("comments", comments);
             List<Category> categories = categoryRepository.findAll();
             CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            for (Post post : posts) {
+                post.setComments(commentRepository.findAllByPostId(post.getId()));
+            }
             map.addAttribute("posts", posts);
             map.addAttribute("categories", categories);
             map.addAttribute("user", principal);
@@ -66,6 +72,9 @@ public class MainController {
             List<Category> categories = categoryRepository.findAll();
             CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             List<Comment> comments = commentRepository.findAll();
+            for (Post post : posts) {
+                post.setComments(commentRepository.findAllByPostId(post.getId()));
+            }
             map.addAttribute("comments", comments);
             map.addAttribute("posts", posts);
             map.addAttribute("categories", categories);

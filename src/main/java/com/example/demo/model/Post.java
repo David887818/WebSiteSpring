@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,5 +30,7 @@ public class Post {
     private String picUrl;
     @ManyToOne
     private Category category;
+    @OneToMany
+    private List<Comment> comments;
 
 }
