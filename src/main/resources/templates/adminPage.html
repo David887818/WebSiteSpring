@@ -158,7 +158,7 @@
                             </div>
                             <div class=" panel w-100 mt-2 ">
                                 <div th:each="comment : ${post.comments}" class="d-flex m-2 align-items-center">
-                                    <img style="width: 50px" th:if="${comment.user.picUrl != null}"
+                                    <img style="width: 50px;border-radius: 50%" th:if="${comment.user.picUrl != null}"
                                          th:src="@{'/post/userImage?'(picUrl=${comment.user.picUrl})}">
                                     <p class="m-2" th:if="${comment.comment != null}" th:text="${comment.comment}"></p>
                                 </div>
